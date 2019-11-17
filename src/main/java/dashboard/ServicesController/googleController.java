@@ -89,7 +89,7 @@ public class googleController implements ServicesController {
 
   public googleController() {
     service = new ServiceBuilder("https://www.googleapis.com/auth/calendar")//
-  .apiSecret("mcUi07PvZJ03PMEbUMqT-ezF")//G75LZXRFwAHoF8yakx-ixnfQ
+  .apiSecret("mcUi07PvZJ03PMEbUMqT-ezF")
   .apiKey("409225018737-8kakkq8mfodrq8bp75299fughpde2of4.apps.googleusercontent.com")
   .scope("https://www.googleapis.com/auth/calendar")
   .callback("http://localhost:8080/tmp")
@@ -132,63 +132,9 @@ public class googleController implements ServicesController {
                                           {
             System.out.printf("Body => %s and %s   %s\n", req, code, A);
         OAuth2AccessToken accessToken = service.getAccessToken(code);
-/*
-        Event event = service.events().get('primary', "eventId").execute();
-
-        System.out.println(event.getSummary());
-*/
-
-/*
-        OAuthRequest request = new OAuthRequest(Verb.GET, "https://www.googleapis.com/calendar/v3/calendars/primary/");
-   request.addQuerystringParameter("list", "true");
-   service.signRequest(accessToken, request);
-   Response response = service.execute(request);
-
-   System.out.println("Got it! Lets see what we found...");
-   System.out.println("HTTP RESPONSE: =============");
-   System.out.println(response.getCode());
-
-   JSONParser parser = new JSONParser();
-
-   String jsonAll = response.getBody();
-   System.out.printf("AAA -> %s\n", jsonAll);
-   try {
-     Object obj = parser.parse(jsonAll);
 
 
-     JSONObject jsonAllObj = (JSONObject) obj;
-
-     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-     String jsonItem = gson.toJson(jsonAllObj);
-
-     System.out.println(jsonItem);
-     System.out.println("END RESPONSE ===============");
-
-     JSONObject rj = (JSONObject) JSONValue.parse(response.getBody());
-     JSONArray contents = (JSONArray) rj.get("contents");
-
-     for (int i=0; i<contents.size(); i++) {
-         JSONObject item = (JSONObject) contents.get(i);
-         String path = (String) item.get("path");
-         System.out.println(" - " + path);
-     }
-   } catch (Exception e) {
-     return "azd";
-   }
-
-/*
-        OAuthRequest request = new OAuthRequest(Verb.GET, "https://www.googleapis.com/oauth2/v1/userinfo?alt=json");
-//        OAuthRequest request = new OAuthRequest(Verb.GET, "https://www.googleapis.com/oauth2/v1/calendar?alt=json");
-
-        service.signRequest(accessToken, request);
-
-        Response response = service.execute(request);
-        System.out.printf("Bite => %s \n", response.getBody());
-
-
-*/
-
-        return "azd";
+        return "Test";
       }
 
 

@@ -72,7 +72,7 @@ public class helloController {
     }
   }
 
-  @RequestMapping(value = "/hello", method = RequestMethod.GET)
+  @RequestMapping(value = "/home", method = RequestMethod.GET)
   public ModelAndView index(Authentication authentication)
   {
     User user = userRepository.findUserWithName(authentication.getName())

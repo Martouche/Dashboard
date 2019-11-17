@@ -144,8 +144,8 @@ public class YoutubeTrendController implements WidgetsController
   {
     accessToken = new OAuth2AccessToken("");
     service = new ServiceBuilder("https://www.googleapis.com/auth/youtube.readonly")//
-      .apiSecret("G75LZXRFwAHoF8yakx-ixnfQ")
-      .apiKey("585472118657-89jq2c2rrh93dfirdaf99fkm6cdqk54a.apps.googleusercontent.com")
+      .apiSecret("A0J8bMBAyvXwKjus4uMiV1DS")
+      .apiKey("845428365201-prf20a5m96ld8ivteedqeaa6tutmndpi.apps.googleusercontent.com")
       .scope("https://www.googleapis.com/auth/youtube.readonly")
       .callback("http://localhost:8080/t")
       .build(GoogleApi20.instance());
@@ -182,11 +182,8 @@ public class YoutubeTrendController implements WidgetsController
       Map<String, Object> services = parser.parseMap(jsonAll);
       List<Object> items = (List<Object>)services.get("items");
       String result = "";
-      for (int i = 0; i != items.size(); i++) {
-        String videoId = (String)((Map<String, Object>)((Map<String, Object>)((Map<String, Object>)items.get(i)).get("contentDetails")).get("upload")).get("videoId");
-        result += "<a href=\"https://www.youtube.com/watch?v=" + videoId + "\">";
-        result += "<img src=\"https://img.youtube.com/vi/" + videoId + "/0.jpg\"></a></br></br>";
-      }
+      result += "<a href=\"https://www.youtube.com/watch?v=" + input + "\">";
+      result += "<img src=\"https://img.youtube.com/vi/" + input + "/0.jpg\"></a></br></br>";
       return (result);
     } catch (Exception e) {
       System.out.printf("Exception  %s\n", e.getMessage());
@@ -195,7 +192,7 @@ public class YoutubeTrendController implements WidgetsController
   }
 
 
-  @PostMapping(path="/youtube trend")
+  @PostMapping(path="/youtube search")
   public void youtubeTrendPost(HttpServletRequest request,
                                       HttpServletResponse response, Authentication authentication, @RequestBody String body) throws IOException, ServletException
   {
@@ -212,7 +209,7 @@ public class YoutubeTrendController implements WidgetsController
     redirectStrategy.sendRedirect(request, response, "/dashboardController");
   }
 
-  @RequestMapping("/youtube trend")
+  @RequestMapping("/youtube search")
   public String youtubeTrendGet(@RequestParam(name = "input") String param, @RequestParam(name = "index") String index) throws IOException, ServletException, InterruptedException, ExecutionException
   {
     return INSTANCE.getData(param) + "=>/"+index;
@@ -237,7 +234,7 @@ public class YoutubeTrendController implements WidgetsController
 
 
     RedirectView redirectView = new RedirectView();
-    redirectView.setUrl("http://localhost:8080/hello");
+    redirectView.setUrl("http://localhost:8080/home");
     return redirectView;
   }
 }

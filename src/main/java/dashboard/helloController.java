@@ -72,7 +72,7 @@ public class helloController {
     }
   }
 
-  @RequestMapping(value = "/hello", method = RequestMethod.GET)
+  @RequestMapping(value = "/home", method = RequestMethod.GET)
   public ModelAndView index(Authentication authentication)
   {
     User user = userRepository.findUserWithName(authentication.getName())
@@ -95,7 +95,6 @@ public class helloController {
      List<String> ServicesString = new ArrayList<String>();
 
      for (ServicesTable temp : servicesList) {
-       System.out.printf("service -> %s", temp.getLabel());
        ServicesString.add(temp.getLabel());
       }
 

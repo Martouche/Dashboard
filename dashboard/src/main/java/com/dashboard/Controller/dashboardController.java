@@ -46,7 +46,7 @@ public class dashboardController {
     System.out.printf("INIt\n");
     mapWidgets.put("meteo", new meteoController(userRepository));
     mapWidgets.put("reddit", new redditController(userRepository));
-    mapWidgets.put("youtube trend", YoutubeTrendController.getInstance());
+    mapWidgets.put("youtube search", YoutubeTrendController.getInstance());
   }
 
   public dashboardController(UserRepository userRepository) {

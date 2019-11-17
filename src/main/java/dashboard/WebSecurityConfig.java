@@ -76,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                             HttpServletResponse response, Authentication authentication)
                 throws IOException, ServletException {
             response.setStatus(HttpServletResponse.SC_OK);
-            redirectStrategy.sendRedirect(request, response, "/hello");
+            redirectStrategy.sendRedirect(request, response, "/home");
         }
     }
 
