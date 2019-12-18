@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Connexion - Dashboard</title>
+  <link href="assets/img/brand/favicon.ico" rel="icon" type="image/ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <link href="assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="assets/css/tmp.css" type="text/css" rel="stylesheet">
+  <link href="assets/css/home.css" type="text/css" rel="stylesheet">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+</head>
+
+<body class="bg-default">
+<div class="login-form">
+
+  <h1>Login</h1>
+
+  <!-- Login Form -->
+  <form name="form" action="/login" method="post">
+
+    <div class="group">
+      <label>Email</label>
+      <input required placeholder="Email" type="text" name="email">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="group">
+      <label>Mot de passe</label>
+      <input type="password" required name="password" placeholder="password">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+    </div>
+
+    <input type="submit" class="logbtn" value="Log In">
+
+
+    <div class="bottom-text">
+      Don't have account? <a href="/register">Sign up</a>
+    </div>
+
+  </form>
+
+</div>
+</body>
+</html>
+
