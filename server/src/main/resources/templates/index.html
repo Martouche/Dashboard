@@ -12,6 +12,13 @@
     <link href="/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
 </head>
 
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
 <script src="./assets/js/plugins/jquery/dist/jquery.min.js"></script>
 <script src="./assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./assets/js/plugins/chart.js/dist/Chart.min.js"></script>
@@ -469,238 +476,6 @@
             </div>
         </div>
 
-        <script>function movie() {
-            let value = $("#widget-count-movie").val();
-            let selected = $("#widget-selector-movie").val();
-            console.debug(selected);
-            console.debug(value);
-
-            if (selected == "movie") {
-                $.getJSON('https://api.themoviedb.org/3/movie/' + value + '?api_key=48726af5faa4c886b10bab390ddd736a', function (data) {
-                    let title = data["title"];
-
-                    let html = "<div class=\"col-xl-12\">\n" +
-                        "                <div class=\"card shadow\">\n" +
-                        "                    <div class=\"card-header border-0\">\n" +
-                        "                        <div class=\"row align-items-center\">\n" +
-                        "                            <div class=\"icon icon-shape bg-cyan text-white rounded-circle shadow\">\n" +
-                        "                                <i class=\"fas fa-film\"></i>\n" +
-                        "                            </div>\n" +
-                        "                            <div class=\"col\">\n" +
-                        "                                <h3 class=\"mb-0\">Films</h3>\n" +
-                        "                            </div>\n" +
-                        "                        </div>\n" +
-                        "                    </div>\n" +
-                        "                    <div class=\"table-responsive\">\n" +
-                        "                        <!-- Projects table -->\n" +
-                        "                        <table class=\"table align-items-center table-flush\">\n" +
-                        "                            <thead class=\"thead-black\">\n" +
-                        "                            <tr>\n" +
-                        "                                <th scope=\"col\">Titre du film</th>\n" +
-                        "                            </tr>\n" +
-                        "                            </thead>\n" +
-                        "                            <tbody>\n" +
-                        "                            <tr>\n" +
-                        "                                <th>\n" +
-                        "                                    <span>" + title + "</span>\n" +
-                        "                                </th>\n" +
-                        "                            </tr>\n" +
-                        "                            </tbody>\n" +
-                        "                        </table>\n" +
-                        "                    </div>\n" +
-                        "                </div>\n" +
-                        "            </div>";
-                    $("#movie").show();
-                    $("#movie").html(html);
-                });
-            } else {
-
-                $.getJSON('https://api.themoviedb.org/3/search/person?api_key=48726af5faa4c886b10bab390ddd736a&query=' + value, function (data) {
-                    let movie1 = data["results"][0]["known_for"][0]["title"];
-                    let movie2 = data["results"][0]["known_for"][1]["title"];
-                    let movie3 = data["results"][0]["known_for"][2]["title"];
-
-                    let html = "<div class=\"col-xl-12\">\n" +
-                        "                <div class=\"card shadow\">\n" +
-                        "                    <div class=\"card-header border-0\">\n" +
-                        "                        <div class=\"row align-items-center\">\n" +
-                        "                            <div class=\"icon icon-shape bg-cyan text-white rounded-circle shadow\">\n" +
-                        "                                <i class=\"fas fa-film\"></i>\n" +
-                        "                            </div>\n" +
-                        "                            <div class=\"col\">\n" +
-                        "                                <h3 class=\"mb-0\">" + value + " : Meilleurs films</h3>\n " +
-                        "                            </div>\n" +
-                        "                        </div>\n" +
-                        "                    </div>\n" +
-                        "                    <div class=\"table-responsive\">\n" +
-                        "                        <!-- Projects table -->\n" +
-                        "                        <table class=\"table align-items-center table-flush\">\n" +
-                        "                            <thead class=\"thead-black\">\n" +
-                        "                            <tr>\n" +
-                        "                                <th scope=\"col\">Titre des films</th>\n" +
-                        "                            </tr>\n" +
-                        "                            </thead>\n" +
-                        "                            <tbody>\n" +
-                        "                            <tr>\n" +
-                        "                                <th>\n" +
-                        "                                    <span>" + movie1 + "</span>\n" +
-                        "                                </th>\n" +
-                        "                                <th>\n" +
-                        "                                    <span>" + movie2 + "</span>\n" +
-                        "                                </th>\n" +
-                        "                                <th>\n" +
-                        "                                    <span>" + movie3 + "</span>\n" +
-                        "                                </th>\n" +
-                        "                            </tr>\n" +
-                        "                            </tbody>\n" +
-                        "                        </table>\n" +
-                        "                    </div>\n" +
-                        "                </div>\n" +
-                        "            </div>";
-                    $("#actor").show();
-                    $("#actor").html(html);
-                });
-            }
-        }
-
-        function ChuckNorris() {
-
-            $.getJSON('http://localhost:8080/service/chucknorris/facts', function (data) {
-                let title = data["value"];
-
-                let html = "<div class=\"col-xl-12\">\n" +
-                    "                <div class=\"card shadow\">\n" +
-                    "                    <div class=\"card-header border-0\">\n" +
-                    "                        <div class=\"row align-items-center\">\n" +
-                    "                            <div class=\"icon icon-shape bg-orange text-white rounded-circle shadow\">\n" +
-                    "                                <i class=\"fas fa-laugh-squint\"></i>\n" +
-                    "                            </div>\n" +
-                    "                            <div class=\"col\">\n" +
-                    "                                <h3 class=\"mb-0\">Chuck Norris</h3>\n" +
-                    "                            </div>\n" +
-                    "                        </div>\n" +
-                    "                    </div>\n" +
-                    "                    <div class=\"table-responsive\">\n" +
-                    "                        <!-- Projects table -->\n" +
-                    "                        <table class=\"table align-items-center table-flush\">\n" +
-                    "                            <thead class=\"thead-black\">\n" +
-                    "                            <tr>\n" +
-                    "                                <th scope=\"col\">Citations</th>\n" +
-                    "                            </tr>\n" +
-                    "                            </thead>\n" +
-                    "                            <tbody>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + title + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            </tbody>\n" +
-                    "                        </table>\n" +
-                    "                    </div>\n" +
-                    "                </div>\n" +
-                    "            </div>";
-                $("#ChuckNorris").show();
-                $("#ChuckNorris").html(html);
-            });
-        }
-
-        function cocktail() {
-            let value = $("#widget-name-cocktail").val();
-
-            $.getJSON('http://localhost:8080/service/cocktails/cocktail?value=' + value, function (data) {
-                let cocktail1 = data["drinks"][0];
-                let cocktail2 = data["drinks"][1];
-                let cocktail3 = data["drinks"][2];
-                let cocktail4 = data["drinks"][3];
-                let cocktail5 = data["drinks"][4];
-                let cocktail6 = data["drinks"][5];
-                let cocktail7 = data["drinks"][6];
-                let cocktail8 = data["drinks"][7];
-                let cocktail9 = data["drinks"][8];
-                let cocktail10 = data["drinks"][9];
-
-                let html = "<div class=\"col-xl-12\">\n" +
-                    "                <div class=\"card shadow\">\n" +
-                    "                    <div class=\"card-header border-0\">\n" +
-                    "                        <div class=\"row align-items-center\">\n" +
-                    "                            <div class=\"icon icon-shape bg-yellow text-white rounded-circle shadow\">\n" +
-                    "                                <i class=\"fas fa-cocktail\"></i>\n" +
-                    "                            </div>\n" +
-                    "                            <div class=\"col\">\n" +
-                    "                                <h3 class=\"mb-0\">Cocktails>\n" +
-                    "                            </div>\n" +
-                    "                        </div>\n" +
-                    "                    </div>\n" +
-                    "                    <div class=\"table-responsive\">\n" +
-                    "                        <!-- Projects table -->\n" +
-                    "                        <table class=\"table align-items-center table-flush\">\n" +
-                    "                            <thead class=\"thead-black\">\n" +
-                    "                            <tr>\n" +
-                    "                                <th scope=\"col\">Cocktail</th>\n" +
-                    "                            </tr>\n" +
-                    "                            </thead>\n" +
-                    "                            <tbody>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail1 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail2 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail3 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail4 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail5 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail6 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail7 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail8 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail9 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            <tr>\n" +
-                    "                                <th>\n" +
-                    "                                    <span>" + cocktail10 + "</span>\n" +
-                    "                                </th>\n" +
-                    "                            </tr>\n" +
-                    "                            </tbody>\n" +
-                    "                        </table>\n" +
-                    "                    </div>\n" +
-                    "                </div>\n" +
-                    "            </div>";
-                $("#cocktail").show();
-                $("#cocktail").html(html);
-            });
-        }
-        </script>
-
         <!-- Modal Movie -->
         <div class="modal fade" id="MovieModal" tabindex="-1" role="dialog" aria-labelledby="MovieModal"
              aria-hidden="true">
@@ -829,6 +604,7 @@
         <div id="movie" class="content row col-12"></div>
         <div id="actor" class="content row col-12"></div>
         <div id="ChuckNorris" class="content row col-12"></div>
+        <div id="cocktail" class="content row col-12"></div>
 
         <footer class="footer">
             <div class="container-fluid">
@@ -874,21 +650,7 @@
         </ul>
     </div>
 </div>
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Google Maps Plugin    -->
-<!-- Place this tag in your head or just before your close body tag. -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chart JS -->
-<script src="../assets/js/plugins/chartjs.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
+
 <script>
     $(document).ready(function() {
         $().ready(function() {
@@ -1014,6 +776,238 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
     });
+</script>
+
+<script>function movie() {
+    let value = $("#widget-count-movie").val();
+    let selected = $("#widget-selector-movie").val();
+    console.debug(selected);
+    console.debug(value);
+
+    if (selected == "movie") {
+        $.getJSON('https://api.themoviedb.org/3/movie/' + value + '?api_key=48726af5faa4c886b10bab390ddd736a', function (data) {
+            let title = data["title"];
+
+            let html = "<div class=\"col-xl-12\">\n" +
+                "                <div class=\"card shadow\">\n" +
+                "                    <div class=\"card-header border-0\">\n" +
+                "                        <div class=\"row align-items-center\">\n" +
+                "                            <div class=\"icon icon-shape bg-cyan text-white rounded-circle shadow\">\n" +
+                "                                <i class=\"fas fa-film\"></i>\n" +
+                "                            </div>\n" +
+                "                            <div class=\"col\">\n" +
+                "                                <h3 class=\"mb-0\">Films</h3>\n" +
+                "                            </div>\n" +
+                "                        </div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"table-responsive\">\n" +
+                "                        <!-- Projects table -->\n" +
+                "                        <table class=\"table align-items-center table-flush\">\n" +
+                "                            <thead class=\"thead-black\">\n" +
+                "                            <tr>\n" +
+                "                                <th scope=\"col\">Titre du film</th>\n" +
+                "                            </tr>\n" +
+                "                            </thead>\n" +
+                "                            <tbody>\n" +
+                "                            <tr>\n" +
+                "                                <th>\n" +
+                "                                    <span>" + title + "</span>\n" +
+                "                                </th>\n" +
+                "                            </tr>\n" +
+                "                            </tbody>\n" +
+                "                        </table>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "            </div>";
+            $("#movie").show();
+            $("#movie").html(html);
+        });
+    } else {
+
+        $.getJSON('https://api.themoviedb.org/3/search/person?api_key=48726af5faa4c886b10bab390ddd736a&query=' + value, function (data) {
+            let movie1 = data["results"][0]["known_for"][0]["title"];
+            let movie2 = data["results"][0]["known_for"][1]["title"];
+            let movie3 = data["results"][0]["known_for"][2]["title"];
+
+            let html = "<div class=\"col-xl-12\">\n" +
+                "                <div class=\"card shadow\">\n" +
+                "                    <div class=\"card-header border-0\">\n" +
+                "                        <div class=\"row align-items-center\">\n" +
+                "                            <div class=\"icon icon-shape bg-cyan text-white rounded-circle shadow\">\n" +
+                "                                <i class=\"fas fa-film\"></i>\n" +
+                "                            </div>\n" +
+                "                            <div class=\"col\">\n" +
+                "                                <h3 class=\"mb-0\">" + value + " : Meilleurs films</h3>\n " +
+                "                            </div>\n" +
+                "                        </div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"table-responsive\">\n" +
+                "                        <!-- Projects table -->\n" +
+                "                        <table class=\"table align-items-center table-flush\">\n" +
+                "                            <thead class=\"thead-black\">\n" +
+                "                            <tr>\n" +
+                "                                <th scope=\"col\">Titre des films</th>\n" +
+                "                            </tr>\n" +
+                "                            </thead>\n" +
+                "                            <tbody>\n" +
+                "                            <tr>\n" +
+                "                                <th>\n" +
+                "                                    <span>" + movie1 + "</span>\n" +
+                "                                </th>\n" +
+                "                                <th>\n" +
+                "                                    <span>" + movie2 + "</span>\n" +
+                "                                </th>\n" +
+                "                                <th>\n" +
+                "                                    <span>" + movie3 + "</span>\n" +
+                "                                </th>\n" +
+                "                            </tr>\n" +
+                "                            </tbody>\n" +
+                "                        </table>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "            </div>";
+            $("#actor").show();
+            $("#actor").html(html);
+        });
+    }
+}
+
+function ChuckNorris() {
+
+    $.getJSON('http://localhost:8080/service/chucknorris/facts', function (data) {
+        let title = data["value"];
+
+        let html = "<div class=\"col-xl-12\">\n" +
+            "                <div class=\"card shadow\">\n" +
+            "                    <div class=\"card-header border-0\">\n" +
+            "                        <div class=\"row align-items-center\">\n" +
+            "                            <div class=\"icon icon-shape bg-orange text-white rounded-circle shadow\">\n" +
+            "                                <i class=\"fas fa-laugh-squint\"></i>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"col\">\n" +
+            "                                <h3 class=\"mb-0\">Chuck Norris</h3>\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"table-responsive\">\n" +
+            "                        <!-- Projects table -->\n" +
+            "                        <table class=\"table align-items-center table-flush\">\n" +
+            "                            <thead class=\"thead-black\">\n" +
+            "                            <tr>\n" +
+            "                                <th scope=\"col\">Citations</th>\n" +
+            "                            </tr>\n" +
+            "                            </thead>\n" +
+            "                            <tbody>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + title + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            </tbody>\n" +
+            "                        </table>\n" +
+            "                    </div>\n" +
+            "                </div>\n" +
+            "            </div>";
+        $("#ChuckNorris").show();
+        $("#ChuckNorris").html(html);
+    });
+}
+
+function cocktail() {
+    let value = $("#widget-name-cocktail").val();
+
+    $.getJSON('http://localhost:8080/service/cocktails/cocktail?value=' + value, function (data) {
+        let cocktail1 = data["drinks"][0]["strDrink"];
+        let cocktail2 = data["drinks"][1]["strDrink"];
+        let cocktail3 = data["drinks"][2]["strDrink"];
+        let cocktail4 = data["drinks"][3]["strDrink"];
+        let cocktail5 = data["drinks"][4]["strDrink"];
+        let cocktail6 = data["drinks"][5]["strDrink"];
+        let cocktail7 = data["drinks"][6]["strDrink"];
+        let cocktail8 = data["drinks"][7]["strDrink"];
+        let cocktail9 = data["drinks"][8]["strDrink"];
+        let cocktail10 = data["drinks"][9]["strDrink"];
+
+        let html = "<div class=\"col-xl-12\">\n" +
+            "                <div class=\"card shadow\">\n" +
+            "                    <div class=\"card-header border-0\">\n" +
+            "                        <div class=\"row align-items-center\">\n" +
+            "                            <div class=\"icon icon-shape bg-green text-white rounded-circle shadow\">\n" +
+            "                                <i class=\"fas fa-cocktail\"></i>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"col\">\n" +
+            "                                <h3 class=\"mb-0\">Cocktails\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"table-responsive\">\n" +
+            "                        <!-- Projects table -->\n" +
+            "                        <table class=\"table align-items-center table-flush\">\n" +
+            "                            <thead class=\"thead-black\">\n" +
+            "                            <tr>\n" +
+            "                                <th scope=\"col\">Cocktail</th>\n" +
+            "                            </tr>\n" +
+            "                            </thead>\n" +
+            "                            <tbody>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail1 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail2 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail3 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail4 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail5 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail6 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail7 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail8 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail9 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail10 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            </tbody>\n" +
+            "                        </table>\n" +
+            "                    </div>\n" +
+            "                </div>\n" +
+            "            </div>";
+        $("#cocktail").show();
+        $("#cocktail").html(html);
+    });
+}
 </script>
 </body>
 </html>

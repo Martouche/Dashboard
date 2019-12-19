@@ -39,12 +39,8 @@ function hideYoutubeDeleteModal() {
     $('#YoutubeDeleteModal').modal('hide');
 }
 
-function hideChuckNorrisModal() {
-    $('#ChuckNorrisDeleteModal').modal('hide');
-}
-
 function hideCocktailModal() {
-    $('#CocktailDeleteModal').modal('hide');
+    $('#CocktailModal').modal('hide');
 }
 
 function hideMovieDeleteModal() {
@@ -77,7 +73,6 @@ function hideTwitchWidget() {
 
 function hideMovieWidget() {
     let value = $("#widget-selector-movie-delete").val();
-    console.debug(value);
 
     if (value == "movie-delete") {
         $('#movie').hide();
@@ -85,7 +80,6 @@ function hideMovieWidget() {
         $('#actor').hide();
     }
 }
-
 
 function hideWeatherWidget() {
     $('#weather').hide();
@@ -96,9 +90,8 @@ function hideChuckNorrisWidget() {
 }
 
 function hideCocktailWidget() {
-    $('#cocktail').hide();
+    $('#Cocktail').hide();
 }
-
 
 function hideDeezerWidget() {
     $('#deezer').hide();
