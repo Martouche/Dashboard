@@ -9,6 +9,7 @@ window.onload = function() {
     $('#subscribers').hide();
     $('#lastvideo').hide();
     $('#cocktail').hide();
+    $('#news').hide();
 };
 
 function hideYoutubeModal() {
@@ -35,6 +36,10 @@ function hideChuckNorrisModal() {
     $('#ChuckNorrisModal').modal('hide');
 }
 
+function hideNewsModal() {
+    $('#news').modal('hide');
+}
+
 function hideYoutubeDeleteModal() {
     $('#YoutubeDeleteModal').modal('hide');
 }
@@ -45,6 +50,10 @@ function hideCocktailModal() {
 
 function hideMovieDeleteModal() {
     $('#MovieDeleteModal').modal('hide');
+}
+
+function hideNewsDeleteModal() {
+    $('#newsDeleteModal').modal('hide');
 }
 
 function hideTwitchDeleteModal() {
@@ -90,7 +99,11 @@ function hideChuckNorrisWidget() {
 }
 
 function hideCocktailWidget() {
-    $('#Cocktail').hide();
+    $('#cocktail').hide();
+}
+
+function hideNewsWidget() {
+    $('#news').hide();
 }
 
 function hideDeezerWidget() {

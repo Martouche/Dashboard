@@ -278,6 +278,35 @@
                                                 </div>
                                             </td>
                                         </tr>
+					  <tr>
+                                            <th scope="row">
+                                                <div class="media align-items-center">
+                                                    <a href="#" class="avatar rounded-circle mr-3">
+                                                        <div class="icon icon-shape bg-teal text-white rounded-circle shadow">
+                                                            <i class="fas fa-newspaper"></i>
+                                                        </div>
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <span class="mb-0 text-sm">Actualités</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right">
+                                                <div class="col text-right">
+                                                    <button data-toggle="modal" data-target="#NewsModal"
+                                                            class="btn btn-sm btn-success">Ajouter
+                                                    </button>
+                                                    <button data-toggle="modal" data-target="#NewsModal"
+                                                            class="btn btn-sm btn-primary">Modifier
+                                                    </button>
+                                                    <button onclick="hideNewsWidget()" class="btn btn-sm btn-danger">Supprimer
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -594,6 +623,34 @@
             </div>
         </div>
 
+	<!-- Modal News -->
+        <div class="modal fade" id="NewsModal" tabindex="-1" role="dialog" aria-labelledby="NewsModal"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="NewsModalTitle">Ajouter un widget actualité</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:news()">
+                            <div class="form-group">
+                                <label for="widget-name-news">Pays</label>
+                                <input class="form-control" id="widget-name-news" placeholder="Pays">
+                            </div>
+                            <div class="modal-footer">
+                                <button onclick="hideNewsModal()" type="submit" class="btn btn-primary">Ajouter le
+                                    widget
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Widgets -->
         <div id="subscribers" class="content row col-12"></div>
         <div id="lastvideo" class="content row col-12"></div>
@@ -605,6 +662,7 @@
         <div id="actor" class="content row col-12"></div>
         <div id="ChuckNorris" class="content row col-12"></div>
         <div id="cocktail" class="content row col-12"></div>
+        <div id="news" class="content row col-12"></div>
 
         <footer class="footer">
             <div class="container-fluid">
@@ -1008,6 +1066,103 @@ function cocktail() {
         $("#cocktail").html(html);
     });
 }
+
+function news() {
+    let value = $("#widget-name-news").val();
+
+    $.getJSON('http://localhost:8080/service/news/new?value=' + value, function (data) {
+        let cocktail1 = data["articles"][0]["description"];
+        let cocktail2 = data["articles"][1]["description"];
+        let cocktail3 = data["articles"][2]["description"];
+        let cocktail4 = data["articles"][3]["description"];
+        let cocktail5 = data["articles"][4]["description"];
+        let cocktail6 = data["articles"][5]["description"];
+        let cocktail7 = data["articles"][6]["description"];
+        let cocktail8 = data["articles"][7]["description"];
+        let cocktail9 = data["articles"][8]["description"];
+        let cocktail10 = data["articles"][9]["description"];
+
+        let html = "<div class=\"col-xl-12\">\n" +
+            "                <div class=\"card shadow\">\n" +
+            "                    <div class=\"card-header border-0\">\n" +
+            "                        <div class=\"row align-items-center\">\n" +
+            "                            <div class=\"icon icon-shape bg-teal text-white rounded-circle shadow\">\n" +
+            "                                <i class=\"fas fa-newspaper\"></i>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"col\">\n" +
+            "                                <h3 class=\"mb-0\">Actualités\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"table-responsive\">\n" +
+            "                        <!-- Projects table -->\n" +
+            "                        <table class=\"table align-items-center table-flush\">\n" +
+            "                            <thead class=\"thead-black\">\n" +
+            "                            <tr>\n" +
+            "                                <th scope=\"col\">Actualité</th>\n" +
+            "                            </tr>\n" +
+            "                            </thead>\n" +
+            "                            <tbody>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail1 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail2 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail3 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail4 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail5 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail6 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail7 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail8 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail9 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + cocktail10 + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            </tbody>\n" +
+            "                        </table>\n" +
+            "                    </div>\n" +
+            "                </div>\n" +
+            "            </div>";
+        $("#news").show();
+        $("#news").html(html);
+    });
+}
+
 </script>
 </body>
 </html>

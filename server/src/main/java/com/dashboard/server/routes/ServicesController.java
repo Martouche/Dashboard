@@ -32,6 +32,7 @@ public class ServicesController {
     MovieService MovieService = new MovieService();
     ChuckNorrisService ChuckNorrisService = new ChuckNorrisService();
     CocktailService CocktailService = new CocktailService();
+    ActualiteService ActualiteService = new ActualiteService();
 
     @RequestMapping("/service/weather/temperature")
     public String Temperature(@RequestParam("value") String value) {
@@ -68,6 +69,9 @@ public class ServicesController {
 
     @RequestMapping("/service/cocktails/cocktail")
     public String Cocktail(@RequestParam("value") String value) { return CocktailService.Cocktail(value); }
+
+    @RequestMapping("/service/news/new")
+    public String News(@RequestParam("value") String value) { return ActualiteService.News(value); }
 
     @RequestMapping("/service/chucknorris/facts")
     public String Fact() { return ChuckNorrisService.Fact(); }
