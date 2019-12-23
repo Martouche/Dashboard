@@ -10,6 +10,7 @@ window.onload = function() {
     $('#lastvideo').hide();
     $('#cocktail').hide();
     $('#news').hide();
+    $('#lyrics').hide();
 };
 
 function hideYoutubeModal() {
@@ -18,6 +19,10 @@ function hideYoutubeModal() {
 
 function hideTwitchModal() {
     $('#TwitchModal').modal('hide');
+}
+
+function hideLyricsModal() {
+    $('#lyrics').modal('hide');
 }
 
 function hideWeatherModal() {
@@ -50,6 +55,10 @@ function hideCocktailModal() {
 
 function hideMovieDeleteModal() {
     $('#MovieDeleteModal').modal('hide');
+}
+
+function hideLyricsDeleteModal() {
+    $('#LyricsDeleteModal').modal('hide');
 }
 
 function hideNewsDeleteModal() {
@@ -104,6 +113,10 @@ function hideCocktailWidget() {
 
 function hideNewsWidget() {
     $('#news').hide();
+}
+
+function hideLyricsWidget() {
+    $('#lyrics').hide();
 }
 
 function hideDeezerWidget() {

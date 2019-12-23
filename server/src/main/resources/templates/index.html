@@ -307,6 +307,35 @@
                                                 </div>
                                             </td>
                                         </tr>
+					  <tr>
+                                            <th scope="row">
+                                                <div class="media align-items-center">
+                                                    <a href="#" class="avatar rounded-circle mr-3">
+                                                        <div class="icon icon-shape bg-red text-white rounded-circle shadow">
+                                                            <i class="fas fa-microphone"></i>
+                                                        </div>
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <span class="mb-0 text-sm">Lyrics</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right">
+                                                <div class="col text-right">
+                                                    <button data-toggle="modal" data-target="#LyricsModal"
+                                                            class="btn btn-sm btn-success">Ajouter
+                                                    </button>
+                                                    <button data-toggle="modal" data-target="#LyricsModal"
+                                                            class="btn btn-sm btn-primary">Modifier
+                                                    </button>
+                                                    <button onclick="hideLyricsWidget()" class="btn btn-sm btn-danger">Supprimer
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -316,6 +345,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Modal Youtube -->
         <div class="modal fade" id="YoutubeModal" tabindex="-1" role="dialog" aria-labelledby="YoutubeModal"
              aria-hidden="true">
@@ -651,6 +681,35 @@
             </div>
         </div>
 
+        <!-- Modal Lyrics -->
+        <div class="modal fade" id="LyricsModal" tabindex="-1" role="dialog" aria-labelledby="LyricsModal"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="LyricsModalTitle">Ajouter un widget Lyrics</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:lyrics()">
+                            <div class="form-group">
+                                <label for="widget-name-lyrics">Rechercher</label>
+                                <input class="form-control" id="widget-name-lyrics-artist" placeholder="Artiste">
+                                <input class="form-control" id="widget-name-lyrics-title" placeholder="Titre">
+                            </div>
+                            <div class="modal-footer">
+                                <button onclick="hideLyricsModal()" type="submit" class="btn btn-primary">Ajouter le
+                                    widget
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Widgets -->
         <div id="subscribers" class="content row col-12"></div>
         <div id="lastvideo" class="content row col-12"></div>
@@ -663,6 +722,7 @@
         <div id="ChuckNorris" class="content row col-12"></div>
         <div id="cocktail" class="content row col-12"></div>
         <div id="news" class="content row col-12"></div>
+        <div id="lyrics" class="content row col-12"></div>
 
         <footer class="footer">
             <div class="container-fluid">
@@ -1160,6 +1220,49 @@ function news() {
             "            </div>";
         $("#news").show();
         $("#news").html(html);
+    });
+}
+
+function lyrics() {
+    let artist = $("#widget-name-lyrics-artist").val();
+    let title = $("#widget-name-lyrics-title").val();
+
+    $.getJSON('http://localhost:8080/service/search/lyrics?artist=' + artist + '&title=' + title, function (data) {
+        let lyrics = data["lyrics"];
+
+        let html = "<div class=\"col-xl-12\">\n" +
+            "                <div class=\"card shadow\">\n" +
+            "                    <div class=\"card-header border-0\">\n" +
+            "                        <div class=\"row align-items-center\">\n" +
+            "                            <div class=\"icon icon-shape bg-red text-white rounded-circle shadow\">\n" +
+            "                                <i class=\"fas fa-microphone\"></i>\n" +
+            "                            </div>\n" +
+            "                            <div class=\"col\">\n" +
+            "                                <h3 class=\"mb-0\">Lyrics\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"table-responsive\">\n" +
+            "                        <!-- Projects table -->\n" +
+            "                        <table class=\"table align-items-center table-flush\">\n" +
+            "                            <thead class=\"thead-black\">\n" +
+            "                            <tr>\n" +
+            "                                <th scope=\"col\">Lyrics</th>\n" +
+            "                            </tr>\n" +
+            "                            </thead>\n" +
+            "                            <tbody>\n" +
+            "                            <tr>\n" +
+            "                                <th>\n" +
+            "                                    <span>" + lyrics + "</span>\n" +
+            "                                </th>\n" +
+            "                            </tr>\n" +
+            "                            </tbody>\n" +
+            "                        </table>\n" +
+            "                    </div>\n" +
+            "                </div>\n" +
+            "            </div>";
+        $("#lyrics").show();
+        $("#lyrics").html(html);
     });
 }
 
