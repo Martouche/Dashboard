@@ -69,6 +69,10 @@ $ sudo docker-compose up
 
 - Actualités par Pays (exemple : Fr --> les gilets jaunes)
 
+### Lyrics
+
+- Parole d'une chanson 
+
 
 ## Comment fonctionne le projet ?
 
